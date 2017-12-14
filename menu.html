@@ -6,6 +6,12 @@
     <style>
     a {color:blue; text-decoration: none;}
     </style>
+    <script type="text/javascript">
+    function gate() {
+      var UserInput = prompt("Please enter the password:","");
+      location.href = "http://www2.kobe-u.ac.jp/~166s111s/ATLAS/" + UserInput + ".html";
+    }
+</script>
   </head>
 
   
@@ -14,6 +20,15 @@
     <div>
     <ul>
     <li><a href="http://www2.kobe-u.ac.jp/~166s111s/top.html" target="main">Topページ</a></li>
+    <li><a href="http://www2.kobe-u.ac.jp/~166s111s/ROOT/root.html" target="main">ROOTメモ</a></li>
+    <li><a href="http://www2.kobe-u.ac.jp/~166s111s/Linux/linux.html" target="main">Linuxメモ</a></li>
+    <li><a href="javascript:gate()" target="main">ATLAS実験</a></li>
+    <li><a href="http://www2.kobe-u.ac.jp/~166s111s/MasterThesis/thesis.html" target="main">修論</a></li>
+    <div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+    <li><a>TownWork探検隊 (+)</a></li>
+    </div>
+    <div id="open" style="display:none;clear:both;">
+    <ol>
     <li><a href="http://www2.kobe-u.ac.jp/~166s111s/prefecture.html" target="main">各植民地の統治者</a></li>
     <li><a href="http://www2.kobe-u.ac.jp/~166s111s/ogawaman_dust.html" target="main">小川ゴミ箱</a></li>
     <li><a href="http://www2.kobe-u.ac.jp/~166s111s/CockroachHunter.html" target="main">Cockroach Hunter</a></li>
@@ -36,6 +51,8 @@
     <li><a href="http://www2.kobe-u.ac.jp/~166s111s/who_is_ogawa.html" target="main">オガワ・インティライミとは？</a></li>
     <li><a href="http://www2.kobe-u.ac.jp/~166s111s/main_active.html" target="main">主にどのような活動をしているの？</a></li>
     <li><a href="http://www2.kobe-u.ac.jp/~166s111s/memo.html" target="main">覚え書き</a></li>
+    </ol>
+    </div>
     </ul>
     </div>
   </body>

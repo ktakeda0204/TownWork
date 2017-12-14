@@ -89,7 +89,15 @@ to create this map.
        break;
 
       case "HOKKAIDO":
-       window.location.href = "http://www2.kobe-u.ac.jp/~166s111s/Prefecture/hokkaido.html";
+       window.location.href = "http://www2.kobe-u.ac.jp/~166s111s/Prefecture/Hokkaido/hokkaido.html";
+       break;
+
+      case "MIYAGI":
+       window.location.href = "http://www2.kobe-u.ac.jp/~166s111s/Prefecture/Miyagi/miyagi.html";
+       break;
+      
+      case "HYOGO":
+       window.location.href = "http://www2.kobe-u.ac.jp/~166s111s/Prefecture/Hyogo/hyogo.html";
        break;
        
        default:
@@ -2661,6 +2669,7 @@ to create this map.
              1831.96,1946.05 1839.58,1943.68 1839.58,1943.94 Z" />
   <path id="HYOGO"
         fill="red" stroke="black" stroke-width="1"
+        onclick="openNewPage(this)"
         d="M 2020.00,2158.50
            C 2020.00,2158.50 2032.00,2148.00 2032.00,2148.00
              2032.00,2148.00 2032.00,2133.50 2032.00,2133.50
@@ -4853,6 +4862,7 @@ to create this map.
              2909.00,1719.00 2909.50,1714.00 2909.50,1714.00 Z" />
   <path id="MIYAGI"
         fill="red" stroke="black" stroke-width="1"
+        onclick="openNewPage(this)"
         d="M 3153.00,1456.00
            C 3153.00,1456.00 3146.00,1450.50 3146.00,1450.50
              3146.00,1450.50 3148.00,1459.00 3148.00,1459.00

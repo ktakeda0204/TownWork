@@ -46,7 +46,56 @@ to create this map.
            x="136.906689" y="35.180342"
            transform="matrix( 156.3775, 0, 0, -193.6681,
                              -19002.869, 8981.693 )" />
+    
+    e.window.location.href = "http://www2.kobe-u.ac.jp/~166s111s/prefecture.html";
+    var r = Math.floor(Math.random() * 255.0);
+    var g = Math.floor(Math.random() * 255.0);
+    var b = Math.floor(Math.random() * 255.0);
+    e.setAttribute('fill', 'rgb(' + r + ', ' + g + ', ' + b + ')');
+    
+    
+    siwthc(e.getAttribute("id")){
+    siwthc(e.getAttribute('id')){
+    
+    String week = "HOKKAIDO";
+
+    switch(week){
+      case "red":
+       window.location.href = "http://www2.kobe-u.ac.jp/~166s111s/prefecture.html";
+       break;
+
+      case "HOKKAIDO":
+       window.location.href = "http://www2.kobe-u.ac.jp/~166s111s/prefecture.html";
+       break;
+       
+       default:
+       window.location.href = "http://www2.kobe-u.ac.jp/~166s111s/prefecture.html";
+    }
+    
+    var week="HOKKAIDO";
+     alert(prefecture);
+
+<frame src="d">
 -->
+
+
+<script><![CDATA[
+  function openNewPage(e) {
+     var prefecture = e.getAttribute('id');
+    
+    switch(prefecture){
+      case "AOMORI":
+       window.location.href = "http://www2.kobe-u.ac.jp/~166s111s/Prefecture/prefecture.html";
+       break;
+
+      case "HOKKAIDO":
+       window.location.href = "http://www2.kobe-u.ac.jp/~166s111s/Prefecture/hokkaido.html";
+       break;
+       
+       default:
+    }
+  }
+]]></script>
 
 
   <path id="OKINAWA"
@@ -5189,6 +5238,7 @@ to create this map.
              2994.33,1450.00 2984.00,1451.00 2984.00,1451.00M 2976.33,1452.67" />
   <path id="AOMORI"
         fill="none" stroke="black" stroke-width="1"
+        onclick="openNewPage(this)"
         d="M 2882.33,1140.00
            C 2882.33,1140.00 2881.33,1128.33 2878.00,1122.00
              2878.00,1122.00 2870.00,1121.67 2870.00,1121.67
@@ -5389,6 +5439,7 @@ to create this map.
              3861.00,551.00 3852.00,547.50 3852.00,547.50 Z" />
   <path id="HOKKAIDO"
         fill="red" stroke="black" stroke-width="1"
+        onclick="openNewPage(this)"
         d="M 3710.00,548.00
            C 3712.67,557.33 3712.67,572.00 3720.00,580.67
              3719.33,581.33 3729.33,598.00 3749.33,602.00

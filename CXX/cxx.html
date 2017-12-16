@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Town workの旅</title>
+    <meta charset="utf-8" />
+
+    <!-- Style -->
+    .center {
+      text-align: center;
+    }
+</head>
+
+  
+<body>
+    <h1>C++</h1>
+    <h2>Makefileの書き方</h2>
+
+    <h3>フォニーターゲット</h3>
+    <p>
+    make <ターゲット名>が基本的な使い方。ターゲット名を指定しない場合は、makefileの中で一番最初のターゲットのコンパイルが始まる。
+    本来はターゲット名にファイル名を指定したりするが、make clean等はフォニーターゲットを導入する事で実現する事が出来る。<br>
+    <div class="center">
+    <code>
+    .PHONY clean<br>
+    clean: 　　<br>
+    rm -r  ..... <br>
+    </code>
+    </div>
+    こうする事で、cleanというファイルがあっても大丈夫。</p>
+
+    <h3>==自動変数==</h3>
+    <ul>
+    <li>$@ : ターゲットファイル名</li>
+    <li>$% : ターゲットがアーカイブメンバだったときのターゲットメンバ名</li>
+    <li>$＜ : 最初の依存するファイルの名前</li>
+    <li>$? : ターゲットより新しいすべての依存するファイル名</li>
+    <li>$^ : すべての依存するファイルの名前</li>
+    <li>$+ : Makefileと同じ順番の依存するファイルの名前</li>
+    <li>$* : サフィックスを除いたターゲットの名前</li>
+    <li>@：Make実行時この行を表示しない</li>
+    </ul>
+
+    <h3> ==関数==</h3>
+    <ul>
+    <li>subst : 置換動作</li>
+    <li>patsubst : 置換動作，ワイルドカードあり</li>
+    <li>strip : 空白文字の削除</li>
+    <li>findstring : 文字列を探す</li>
+    <li>filter : 一致する単語の削除</li>
+    <li>filter-out : 一致しない単語の削除</li>
+    <li>sort : ソートする</li>
+    <li>dir : ディレクトリ部分の抽出</li>
+    <li>nodir : ファイル部分の抽出</li>
+    <li>suffix : サフィックス（拡張子）部分</li>
+    <li>basename : サフィックス以外</li>
+    <li>addprefix : プレフィックスを加える</li>
+    <li>join : 単語の連結</li>
+    <li>word : n番目の単語を返す</li>
+    <li>worldlist : 単語のリストを返す</li>
+    <li>words : 単語数を返す</li>
+    <li>firstword : 最初の名前を返す</li>
+    <li>wildcard : ワイルドカードによりファイル名リストを返す</li>
+    <li>$(wildcard 型...)で指定すると、一致するものが空白で区切られたリストに置き換わる</li>
+    <li>foreach : 引数を複数回展開する</li>
+    </ul>
+
+  </body>
+</html>
+

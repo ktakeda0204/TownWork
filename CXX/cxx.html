@@ -3,22 +3,37 @@
   <head>
     <title>Town workの旅</title>
     <meta charset="utf-8" />
+    <style>
+    a {color:blue; text-decoration: none;}
+    </style>
 
-    <!-- Style -->
+    <!-- CSS Style -->
+    <style>
     .center {
       text-align: center;
     }
+    
+    h2 {
+      background: linear-gradient(transparent 70%, #a7d6ff 70%);
+    }
+    </style>
 </head>
 
   
 <body>
-    <h1>C++</h1>
-    <h2>Makefileの書き方</h2>
+    <ul>
+    <li><a href="#MakeFile">Makefileの書き方</a></li>
+    <li><a href="#int_to_bit">整数値を2進数に変換する</a></li>
+    </ul>
+
+    <h2 id="Makefile">Makefileの書き方</h2>
 
     <h3>フォニーターゲット</h3>
     <p>
-    make <ターゲット名>が基本的な使い方。ターゲット名を指定しない場合は、makefileの中で一番最初のターゲットのコンパイルが始まる。
-    本来はターゲット名にファイル名を指定したりするが、make clean等はフォニーターゲットを導入する事で実現する事が出来る。<br>
+    make <ターゲット名>が基本的な使い方。ターゲット名を指定しない場合は、
+    makefileの中で一番最初のターゲットのコンパイルが始まる。
+    本来はターゲット名にファイル名を指定したりするが、
+    make clean等はフォニーターゲットを導入する事で実現する事が出来る。<br>
     <div class="center">
     <code>
     .PHONY clean<br>
@@ -64,6 +79,13 @@
     <li>foreach : 引数を複数回展開する</li>
     </ul>
 
+    <h2 id="int_to_bit">整数値を2進数に変換する</h2>
+    <p>
+    10進数の整数値を2進数に変換するときにはSTL標準ライブラリのstd::bitsetが便利。
+    std::bitset<8> bit(1234);
+    とすれば初期化できて、coutすれば1234が2進数表示された値が帰ってくる。
+    括弧の中は何ビットで表示するかを決めることが出来る。
+    </p>
   </body>
 </html>
 

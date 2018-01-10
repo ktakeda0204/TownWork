@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Town workの旅</title>
+    <meta charset="utf-8" />
+    <style>
+    a {color:blue; text-decoration: none;}
+    </style>
+  </head>
+
+  
+<!--<body bgcolor="#F4F5F7">-->
+<body>
+    <h2>Linuxコマンド</h2>
+    <ul>
+    <li><a href="#grep">grep</a></li>
+    <li><a href="#grep">head</a></li>
+    <li><a href="#grep">watch</a></li>
+    <li><a href="#grep">tail</a></li>
+    </ul>
+    <p>パフォーマンスモニタリング系</p>
+    <ul>
+    <li><a href="#vmstat">vmstat</a></li>
+    </ul>
+
+    <h3 id="grep">grep</h3>
+    <ul>
+    <li>-i：大文字小文字区別しない</li>
+    <li>-o：一致した部分だけ抜き出せる。awkするよりこっちのが楽チンだったりする。</li>
+    <li>-w：完全一致</li>
+    </ul>
+
+    <h3 id="head">head</h3>
+    <li>-c：バイト数を指定できる。（使ったことないけど）</li>
+
+    <h3 id="watch">watch</h3>
+    なにか標準出力をモニタリングしたり、/proc/系のリアルタイムモニタリングのファイルの変化を見たり多種多様。
+    <li>-n：実行間隔を秒単位で指定する</li>
+    <li>-d：変化した部分を強調して表示してくれる</li>
+
+    <!-------------------------------------------------------------------->
+    <h3 id="vmstat">vmstat</h3>
+    PCのボトルネックを探索するのに便利。指定した間隔で各メモリの使用状況、I/Oの実行状態がモニタリングできる。
+    <pre><code>
+    procs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----
+    r  b  swpd   free   buff  cache   si   so    bi    bo   in      cs us sy id wa st
+    </code></pre>
+    <ul>
+    <li>procs</li>
+     <ul>
+     <li>r：実行中と実行待ち中のプロセス数の合計</li>
+     <li>b：割り込み不可能なスリープ状態にあるプロセス数。これが多いと何か待たされている。</li>
+     </ul>
+
+    <li>memory</li>
+     <ul>
+     <li>swpd：スワップ領域のサイズ</li>
+     <li>free：空いているメモリー</li>
+     <li>buff：</li>
+     <li>cache：キャッシュに使われているサイズ</li>
+     </ul>
+    
+    <li>swap</li>
+     ここが頻繁に多いとメモリ不足が疑われる。
+     <ul>
+     <li>si：スワップインした回数。つまりディスクから一時的に読み込んでしまっている回数。</li>
+     <li>so：スワップアウトした回数。つまりディスクに一時的に書き込んでしまっている回数。</li>
+     </ul>
+    
+    <li>io</li>
+     <ul>
+     <li>bi：ブロックデバイスから受け取ったブロック数。なのでsiとも相関がある。純粋なDisk書き込みにも相関がある。</li>
+     <li>bo：ブロックデバイスに送ったブロック数。</li>
+     </ul>
+    
+    <li>cpu</li>
+     <ul>
+     <li>us：ユーザープログラムの処理に費やされた時間。これが多いとユーザープログラムが頑張れている。</li>
+     <li>sy：カーネルコードの処理に費やされた時間の割合</li>
+     <li>id：アイドル時間の割合</li>
+     <li>wa：データの入出力処理（diskへのアクセス、ネットワークへのアクセス）の時間の割合</li>
+     </ul>
+    </ul>
+
+  </body>
+</html>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Town workの旅</title>
+    <meta charset="utf-8" />
+    <style>
+    a {color:blue; text-decoration: none;}
+    </style>
+
+    <!--ソースコードに色を付ける-->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  </head>
+
+  
+<body>
+    <h2>スクリプト表現</h2>
+    <ul>
+    <li><a href="#read_dataset_txt">データセットが書いているテキストを読んで何かする</a></li>
+    <li><a href="#vmstat">vmstatを上手い具合に日付時間を出力する</a></li>
+    </ul>
+
+    <h3 id="read_dataset_txt">データセットが書いているテキストを読んで何かする</h3>
+    <pre><code class="prettyprint">
+     #!/bin/sh
+     period="A"
+     
+     filename=availability.txt
+     file=./${filename}
+     
+     cat ${file} | while read line
+     do
+      for i in `seq 1 10`
+       do
+         dataset=`echo "$line" | grep -w $period$i | grep -o 'group.*' | grep MCP`
+       if [ -n "$dataset" ]; then
+         name=`echo $dataset | grep -o '00.*'`
+         echo "$period$i -- $name"
+       fi
+       done
+     done
+    </code></pre>
+
+    <h3 id="vmstat">vmstatを上手い具合に日付時間を出力する</h3>
+    2秒間隔で更新し、ヘッダーの表示は1回、メモリサイズの表示はメガバイト表示。
+    <pre><code>
+    vmstat 2 -n -S M | awk '{print strftime("%y/%m/%d %H:%M:%S"), $0}'
+    </code></pre>
+
+
+  </body>
+</html>
+

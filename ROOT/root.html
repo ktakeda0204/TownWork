@@ -3,18 +3,27 @@
   <head>
     <title>ROOTメモ</title>
     <meta charset="utf-8" />
+    <style>
+    a {color:blue; text-decoration: none;}
+    </style>
   </head>
 
   
 <body>
     <h1>How to use ROOT</h1>
-    <h2>Scan()オプション</h2>
+    <ul>
+    <li><a href="#scan_option">Scan()オプション</a></li>
+    <li><a href="#draw">Draw()</a></li>
+    <li><a href="#macro_argument">マクロに引数を渡す</a></li>
+    </ul>
+    
+    <h2 id="scan_option">Scan()オプション</h2>
     <p>
     Scan("変数名：変数名：...","条件式","オプション")  <br> 
     よく使うのはオプションに"colsize=20"とかやって表示幅を増やしたりする。
     </p>
     
-    <h2>Draw()</h2>
+    <h2 id="draw">Draw()</h2>
     <p>
     ROOTのインタープリター上で簡易的にヒストグラムをDraw出来る。
     パッと生分布がどうなっているかを確認したい時に便利。
@@ -23,6 +32,13 @@
     (TTeee)-Draw("変数名","条件式","colz")
     とかも出来る
     </p>
+
+    <h2 id="macro_argument">マクロに引数を渡す</h2>
+    マクロに引数を渡す事が出来る。
+    <pre><code class="prettyprint">
+    root -l 'マクロ名("引数")'
+    </code></pre>
+
 
   </body>
 </html>

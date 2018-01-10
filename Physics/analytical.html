@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+
+<head>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+inlineMath: [['$','$'], ['\\(','\\)']],
+processEscapes: true
+},
+CommonHTML: { matchFontHeight: false }
+});
+</script>
+
+<style>
+    h1 {
+      color: #364e96;/*文字色*/
+      padding: 0.5em 0;/*上下の余白*/
+      border-top: solid 3px #364e96;/*上線*/
+      border-bottom: solid 3px #364e96;/*下線*/
+    }
+    h2 {
+        position: relative;
+          padding-left: 30px;
+            font-size:20px;
+              color: #325A8C;
+    }
+    h2::before,
+    h2::after{
+        content: "□";
+          position: absolute;
+    }
+    h2::before{
+        left:0;
+          top:-3px;
+    }
+    h2::after{
+        left: 5px;
+          top: 3px;
+            color: #A1B8D1;
+    }
+    </style>
+
+</head>
+
+<body>
+ <h1>解析力学</h1>
+  <h2>保存力</h2>
+  経路に依らず仕事が一定になる力を保存力と呼ぶ。保存力は必ずポテンシャルを伴う。
+  
+  <h2>一般化座標</h2>
+  普通の問題では直交座標（デカルト座標）を用いるが、これらをより抽象的に一般的に扱うには少し不便であるので一般化座標を用いる。
+  N個のデカルト座標に対して、それらに対応したN個の一般化座標を導入する。
+  \begin{align}
+   x_{i}=x_{i}(x_{1},x_{2},...,x_{n})
+  \end{align}
+  
+  <h4>例</h4>
+  3次元デカルト座標\[x,y,z\]に対して、極座標\[r,\theta,\phi\]は一般化座標になる。
+
+  
+  <h2>ラグランジアン（ラグランジュ関数）</h2>
+  一般化座標で表した運動エネルギーとポテンシャルの差をラグランジアンと定義する。
+  \begin{align}
+   L(q,\dot{q},t)=T-U
+  \end{align}
+  ラグランジアンから粒子の運動方程式を求めることが出来る,i.e 粒子の運動を決定する事が出来る。
+  
+  <h2>ラグランジュ方程式（ラグランジュの運動方程式）</h2>
+  \begin{align}
+   \cfrac{\mathrm{d}}{\mathrm{dt}}\left(\cfrac{\partial L}{\partial \dot{q_{i}}}\right)-\cfrac{\partial L}{\partial q_{i}}=0
+  \end{align}
+  ラグランジアンを機械的に導出し、機械的にラグランジュ方程式を計算すれば運動方程式を導出する事が出来る。
+  これはハミルトンの原理から導けるオイラーの方程式の１つの形である。
+  
+  <h2>一般化運動量</h2>
+  \begin{align}
+   p_{i}=\cfrac{\partial L}{\partial \dot{q_{i}}}
+  \end{align}
+  これは$p_{i}$と$q_{i}$を入れ替えることが出来る形としても捉えれる。
+
+  <h2>変分</h2>
+  普段の関数は一変数$x$等に影響される。ここでは、関数に影響される関数、汎関数を扱う。
+  (単に、汎関数は関数を変数に持っているというだけの話。)その汎関数が微小変化したものと、もともとの値との差を変分と呼ぶ。</p>
+  関数が極大や極小（停留値）を持つための条件は、その停留値$x$から$dx$だけ少し変化させても、
+  それに対応する$y$の変化はゼロである事である。
+  汎関数に対しても同じで、汎関数$I[f(x)]$が停留値を持つ$y=f_{m}(x)$が見つかった時に、そこから少しずれた関数$y=f(x)$で
+  計算した汎関数$I[f(x)]$との差もゼロになる。
+  \begin{align}
+   \delta I = I[f(x)] - I[f_{m}(x)] = 0
+  \end{align}
+
+  停留値を取らせる関数を求めるには、$\delta I=0$を解けばよく、これを変形していくとオイラーの方程式が出てくる。
+
+  <h2>ハミルトンの原理</h2>
+  ラグランジュの運動方程式に従う運動（ニュートンの運動法則に従う運動と同じ）は、
+  
+  \[
+   \int_{t_{a}}^{t_{b}} L(q_{1},q_{2},...,\dot{q_{1}},...,t) dt
+  \]
+
+  に停留値を取らせる様な運動になっている。つまり、実現される運動は、
+  \[
+    \delta \int_{t_{a}}^{t_{b}} L(q_{1},q_{2},...,\dot{q_{1}},...,t) dt = 0
+  \]
+  を満たす様な運動になる。
+
+  <h2>ハミルトン関数、ハミルトニアン</h2>
+  系全体のエネルギーを表す。（全エネルギーを計算するだけなら高校まででやってきた事と同じ。）
+  ハミルトニアンでは位置と運動量を使って表す。
+  \[
+   H(q,p,t)=\sum_{i=1}^{f} p_{i}\dot{q_{i}}-L(q,p,t)
+  \]
+
+</body>
+</html>

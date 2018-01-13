@@ -9,7 +9,15 @@
   
 <body>
     <h1>Linuxメモ</h1>
-    <h2>コマ数等の確認</h2>
+    <ul>
+    <li><a href="#core">コア数等の確認</a></li>
+    <li><a href="#process">プロセスとは</a></li>
+    <li><a href="#virtual">仮想メモリ</a></li>
+    <li><a href="#network_interface">Linuxのネットワークインターフェース</a></li>
+    <li><a href="#init_script">起動スクリプト</a></li>
+    </ul>
+    
+    <h2 id="core">コア数等の確認</h2>
     <h3>CPU</h3>
     <p>
     CPUの中に中央処理ユニットがある
@@ -20,18 +28,24 @@
     </p>
 
     <h3>物理CPU数</h3>
-    <p>grep physical.id /proc/cpuinfo | sort -u | wc -l <br>
+    <pre><code>
+      grep physical.id /proc/cpuinfo | sort -u | wc -l 
+    </code></pre>
     出力された数字が物理的なCPUの数を表している。</p>
     
     <h3>CPU(=プロセッサ)毎のコア数</h3>
-    <p>grep cpu.cores /proc/cpuinfo | sort -u</p>
+    <pre><code>
+     grep cpu.cores /proc/cpuinfo | sort -u
+     </code></pre>
 
     <h3>論理CPU(=論理プロセッサ)の数</h3>
-    <p>grep processor /proc/cpuinfo | wc -l <br>
+    <pre><code>
+    grep processor /proc/cpuinfo | wc -l 
+    </code></pre>
     Hyper threading(1コアで2スレッドをサポート)に対応していれば、実際のコア数はn個であれば、論理CPUの数はその2倍の2×n個になる
     </p>
 
-    <h2>プロセスとは</h2>
+    <h2 id="process">プロセスとは</h2>
     <p>プロセスとは、プログラム以外に割り当てられたメモリ領域、接続中のソケット、読み書き中のファイル等I/O装置の集合体
     これらをOSが管理し、実際にCPUを使って動かすプロセスを適宜切り替えて、並行して動かしていく。
     プログラムは実行する前はストレージに保管されている。
@@ -54,12 +68,8 @@
     pstree：プロセスの家系図
     </p>
     
-    <h2>パフォーマンスモニタリング</h2>
-    <p>
-    vmstat   <br>
-    </p>
 
-    <h2>仮想メモリ</h2>
+    <h2 id="virtual memory">仮想メモリ</h2>
     <p>
     各プログラムが実メモリ（物理メモリ）を直接触るしか実装方法が無いようなシステムでは、拡張性が貧弱なシステムとなる。
     そもそもプログラムからすれば実メモリが一体どれだけ実装されているPC上で動作することになるか分からないからだ。
@@ -82,26 +92,38 @@
 
     </p>
     
-    <h2>Linux　ネットワークインターフェース</h2>
-    <h3>eth</h3>
-    実装されているネットワークカードは、何も指定しなければ順にeth0、eth1、、、と名前が付けられる。
-
-    <h3>/etc/hosts</h3>
-    ネットワークインターフェースの設定が書き込まれているファイル。
-
-    <h3>ifconfig</h3>
-    ネットワーク・インタフェースに割り当てられているIPアドレスやネットマスクを確認できる。
-    オプションを付けずに打つと、現在起動しているネットワークインターフェースを表示できる。
+    <h2 id="network_interface">Linux　ネットワークインターフェース</h2>
+    言葉・知識の整理
     <ul>
-    <li>-a：全てのネットワーク・インターフェースを表示する</li>
+    <li>eth</li>
+      <ul>
+        <li>実装されているネットワークカードは、何も指定しなければ順にeth0、eth1、、、と名前が付けられる。</li>
+      </ul>
+    <li>/etc/hosts</li>
+      <ul>
+        <li>ネットワークインターフェースの設定が書き込まれているファイル。</li>
+      </ul>
+    <li>ifconfig</li>
+      <ul>
+        <li>ネットワーク・インタフェースに割り当てられているIPアドレスやネットマスクを確認できる。
+            オプションを付けずに打つと、現在起動しているネットワークインターフェースを表示できる。
+        </li>
+      </ul>
+    <li>service network status</li>
+      <ul>
+      <li>ネットワークサービスのステータスを確認できる。</li>
+      </ul>
+    <li>ethtool インターフェース名</li>
+      <ul>
+       <li>指定したインターフェース名のNICがどの通信速度に対応しているかを見ることが出来る。</li>
+       </ul>
     </ul>
-    
-    <h3>service network status</h3>
-    ネットワークサービスのステータスを確認できる。
-    
-    <h3>ethtool インターフェース名</h3>
-    指定したインターフェース名のNICがどの通信速度に対応しているかを見ることが出来る。
 
+
+    <h2 id="init_script">起動スクリプト</h2>
+    デバイスドライバを起動するためのスクリプト。/etc/init.d以下に配置して置くと起動時に読み込まれる。
+    start、stop、statusの引数を取れる様にしておくと便利で、特にstatusでカーネルモジュールがロードされていなければ
+    exitコードを例えば1を返すようにしておくと、「カーネルモジュールがロードされていない！」と分かって便利。
 
 
   </body>

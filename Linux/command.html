@@ -3,23 +3,23 @@
   <head>
     <title>Town workの旅</title>
     <meta charset="utf-8" />
-    <style>
-    a {color:blue; text-decoration: none;}
-    </style>
+    
+    <link rel="stylesheet" href="../CSS/style.css">
   </head>
 
   
-<!--<body bgcolor="#F4F5F7">-->
 <body>
     <h2>Linuxコマンド</h2>
     <ul>
     <li><a href="#grep">grep</a></li>
-    <li><a href="#grep">head</a></li>
-    <li><a href="#grep">watch</a></li>
-    <li><a href="#grep">tail</a></li>
+    <li><a href="#head">head</a></li>
+    <li><a href="#watch">watch</a></li>
+    <li><a href="#tail">tail</a></li>
+    <li><a href="#xargs">xargs</a></li>
     </ul>
     <p>パフォーマンスモニタリング系</p>
     <ul>
+    <li><a href="#free">free</a></li>
     <li><a href="#vmstat">vmstat</a></li>
     </ul>
 
@@ -38,7 +38,36 @@
     <li>-n：実行間隔を秒単位で指定する</li>
     <li>-d：変化した部分を強調して表示してくれる</li>
 
+    <h3 id="xargs">xargs</h3>
+    パイプで渡されたファイル一覧を、指定したコマンドの引数に使用する事が出来る。
+    しかし例えばunlinkは一度に一つの引数しかとれないので、lsをしてその結果をxargsを介して打ち込む事が出来ない。
+    その様な時には
+    <pre><code>
+    ls | xargs -n 1 unlink
+    </code></pre>
+    とすればunlinkに一つずつ全てのファイルを引数として渡すことが出来る。
+
+    
+    
     <!-------------------------------------------------------------------->
+    <h3 id="free">free</h3>
+    メモリの空き容量を確認出来る。
+    <pre><code>
+    [server-admin@XXX]$ free -m
+                 total       used       free     shared    buffers     cached
+    Mem:         29508      26814       2693          5        425      18279
+    -/+ buffers/cache:       8108      21399
+    Swap:        10736          0      10736
+    </code></pre>
+    <ul>
+    <li>total Mem：全メモリサイズ</li>
+    <li>used Mem：使用しているメモリサイズ</li>
+    <li>free Mem：空きのメモリサイズ</li>
+    <li>buffers Mem：バッファ・キャッシュ領域</li>
+    <li>cached Mem：ページ・キャッシュ領域</li>
+    <li>free cahced：解放可能なキャッシュのサイズ</li>
+    </ul>
+
     <h3 id="vmstat">vmstat</h3>
     PCのボトルネックを探索するのに便利。指定した間隔で各メモリの使用状況、I/Oの実行状態がモニタリングできる。
     <pre><code>
@@ -57,7 +86,7 @@
      <li>swpd：スワップ領域のサイズ</li>
      <li>free：空いているメモリー</li>
      <li>buff：</li>
-     <li>cache：キャッシュに使われているサイズ</li>
+     <li>cache：キャッシュに割り当てられたメモリーサイズ。</li>
      </ul>
     
     <li>swap</li>

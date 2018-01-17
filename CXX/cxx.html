@@ -3,20 +3,7 @@
   <head>
     <title>Town workの旅</title>
     <meta charset="utf-8" />
-    <style>
-    a {color:blue; text-decoration: none;}
-    </style>
-
-    <!-- CSS Style -->
-    <style>
-    .center {
-      text-align: center;
-    }
-    
-    h2 {
-      background: linear-gradient(transparent 70%, #a7d6ff 70%);
-    }
-    </style>
+    <link rel="stylesheet" href="../CSS/style.css">
 </head>
 
   
@@ -25,6 +12,7 @@
     <li><a href="#MakeFile">Makefileの書き方</a></li>
     <li><a href="#int_to_bit">整数値を2進数に変換する</a></li>
     <li><a href="#bit_process">ビット演算</a></li>
+    <li><a href="#setfil">数字桁数合わせ</a></li>
     </ul>
 
     <h2 id="Makefile">Makefileの書き方</h2>
@@ -92,6 +80,14 @@
     <p>
     ビット演算の方法
     </p>
+    
+    <h2 id="setfil">数字桁数合わせ</h2>
+    16進数などを表示する時に、桁数を8桁にしたい（32bit幅）とかcoutする時に見栄えを良くする。
+    <pre><code>
+    .. << std:: setw(8) << std::setfill('0') << ...
+    </code></pre>
+    とすれば桁数を8桁にして、0で埋める事が出来る。
+    
   </body>
 </html>
 

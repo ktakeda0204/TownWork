@@ -5,38 +5,70 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../CSS/style.css">
   </head>
-  
-<body>
-<h1>Gitリファレンス</h1>
+
+  <body>
+    <h1>Gitリファレンス</h1>
     <ul>
-    <li>B</li>
-    <ol>
-    <li><a href="#branch">branch</a></li>
-    <li><a href="#tag">tag</a></li>
-    </ol>
-    <li>R</li>
+      <li>B</li>
+      <ol>
+        <li><a href="#branch">branch</a></li>
+        <li><a href="#tag">tag</a></li>
+      </ol>
+      <li>L</li>
+      <ol>
+        <li><a href="#log">log</a></li>
+      </ol>
+      <li>R</li>
+      <ol>
+        <li><a href="#reflog">reflog</a></li>
+      </ol>
+      <li>R</li>
+      <ol>
+        <li><a href="#show">show</a></li>
+      </ol>
     </ul>
-    
-    <h2 id="branch">branch</h1>
+
+    <h2 id="branch">branch</h2>
     git branch ブランチ名</p>
     新しいブランチの作成を行う事が出来る。
     何も指定しなければ、一番新しいコミットの部分から派生する。
     新しいブランチ上でも同様にコミットして作業する事が出来る。
     （例えばdebugの）作業を中断してmasterブランチに戻る事も出来る。
     <h4>オプション</h4>
-      <ul>
-    <li>-v：ブランチのコミットハッシュ値&コミットメッセージを表示できる</li>
-    <li>-d：ブランチを消す</li>
-      </ul>
-    
-    <h2 id="grep">grep</h1>
+    <ul>
+      <li>-v：ブランチのコミットハッシュ値&コミットメッセージを表示できる</li>
+      <li>-d：ブランチを消す</li>
+    </ul>
+
+    <h3>ブランチを作成した日時を確認したい</h3>
+    ブランチはオブジェクトではなく、単なるコミットへの参照なのでブランチそれ自体には日時の情報は含まれていない。
+
+    <h2 id="grep">grep</h2>
     git grep <キーワード名> <探したいブランチ名>
     
-    <h2 id="tag">tag</h1>
+    <h2 id="log">log</h2>
+    コミットの履歴を表示する。
+    <ul>
+      <li>--oneline：一行で簡潔な表示になる</li>
+      <li>--decorate：リファレンス名を出力する</li>
+      <li>--graph：コミットの分岐が可視化出来る</li>
+    </ul>
+
+    <h2 id="tag">tag</h2>
     コミットにタグを振って管理することが出来る。
     <ul>
-    <li>注釈付きのタグを振る：git tag -a <タグ名> -m “コメント、注釈”</li>
+      <li>注釈付きのタグを振る：git tag -a <タグ名> -m “コメント、注釈”</li>
     </ul>
     リモートリポジトリに反映するには、普通にコミットするだけでは不十分。git push origin <タグ名>; git push origin --tagsでようやく反映される。
+    
+    <h2 id="reflog">reflog</h2>
+    リポジトリとブランチのHEADの履歴を、参照ログ（reflog）として管理しており、この参照ログを見ることが出来る。
+    
+    <h2 id="show">show</h2>
+    コミットの内容（日時、コミットメッセージ）をハッシュタグを指定してやる事で見れる。
+    また、ハッシュタグだけでなくタグ名やブランチ名を指定することでも見れる。
+    
+    <h2 id="status">status</h2>
+    コミット状況を見る。
 </html>
 

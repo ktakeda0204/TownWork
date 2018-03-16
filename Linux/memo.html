@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Town workの旅</title>
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="../CSS/style.css">
+  </head>
+
+  <body>
+    <h1>メモ</h1>
+    <h3>root権限がなくてもローカルに欲しいパッケージを持ってくる</h3>
+    <pre><code>
+    mkdir ~/local/bin
+    wget http://sourceforge.net/projects/porg/files/porg-0.8.tar.gz
+    tar xf porg-0.8.tar.gz
+    cd porg-0.8/
+    nice -n 19 ./configure --host=x86_64-redhat-linux --build=x86_64-redhat-linux --prefix=$HOME/local CFLAGS='-march=core2 -O3' --disable-grop --with-porg-logdir=$HOME/local/root/var/log/porg/
+    nice -n 19 make
+    nice -n 19 make install
+    </code></pre>
+    ここで、.bashrcに以下を記述する必要がある。
+    <pre><code>
+    export PATH=$HOME/local/bin:$PATH
+    </code></pre>
+    そうしておいて、もういちどbachrcを読み込んで新しい設定を反映させておいてから、
+    <pre><code>
+    nice -n 19 make logme
+    </code></pre>
+    これでporgがローカルで使用できるようになった。
+    そして次にtcpdumpのパッケージを持ってくる前に、必要なlibcapのインストールを行っておく。
+
+    <pre><code>
+    wget  http://www.tcpdump.org/release/libpcap-1.8.1.tar.gz
+    tar xvf libpcap-1.8.1.tar.gz 
+    cd libpcap-1.8.1/
+    nice -n 19 ./configure --host=x86_64-redhat-linux --build=x86_64-redhat-linux --prefix=$HOME/local CFLAGS='-march=core2 -O3' 
+    nice -n 19 make
+    nice -n 19 make install
+    </code></pre>
+    これで~/local/lib/以下に共有ライブラリであるlibcap.soが出来ている。
+    最後にtcpdumpパッケージのインストール。最新版を拾ってくる。
+    <pre><code>
+    wget http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz
+    tar xvf tcpdump-4.9.2.tar.gz
+    cd tcpdump-4.9.2.tar.gz
+    nice -n 19 ./configure --host=x86_64-redhat-linux --build=x86_64-redhat-linux --prefix=$HOME/local CFLAGS='-march=core2 -O3'
+    nice -n 19 make
+    nice -n 19 make check
+    nice -n 19 porg -lp tcpdump "nice -n 19 make install"
+    </code></pre>
+    これで完了したのだけれど、~/local/sbin/tcpdump -i eth2がそもそもYou don't have permission to capture on that deviceと出た、、、。
+    とりあえずtsharkをインストールしてみる。
+    <pre><code>
+    wget https://1.as.dl.wireshark.org/src/wireshark-2.2.13.tar.bz2
+    tar jxf wireshark-2.2.13.tar.bz2 
+    cd wireshark-2.2.13/
+    nice -n 19 ./configure --host=x86_64-redhat-linux --build=x86_64-redhat-linux --prefix=$HOME/local CFLAGS='-march=core2 -O3'
+    nice -n 19 make
+    nice -n 19 porg -lp wireshark "nice -n 19 make install"
+    </code></pre>
+
+
+  </body>
+</html>

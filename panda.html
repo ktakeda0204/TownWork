@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>SVGをjQueryで操作する方法-デモ</title>
+<link rel="stylesheet" href="../demo.css" />
+
+<style type="text/css">
+body {
+	background: #a7e2ba;
+}
+.svg-wrap {
+	margin: 0 auto;
+	max-width: 700px;
+}
+#svg-fig {
+	width: 100%;
+	height: 100%;
+}
+</style>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47542229-1', 'main.jp');
+  ga('send', 'pageview');
+</script>
+</head>
+<body>
+
+<article>
+<header>
+<h1>SVGをjQueryで操作する方法</h1>
+</header>
+
+<div id="main">
+
+<div class="svg-wrap">
+<object id="svg-fig" data="panda.svg" type="image/svg+xml"></object>
+</div>
+
+<aside class="bnr">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-5521239801206815"
+     data-ad-slot="9713936482"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</aside>
+</div>
+<footer><p class="back" ><a href="/">&#171; back to top</a></p></footer>
+</article>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	$(window).load(function () {
+		//idにsvg-figがついているSVGファイルを取得
+		var fig = document.getElementById('svg-fig').contentDocument,
+		$fig = $(fig), //変数figにsvgファイルを格納
+		$white = $fig.find('#white path');//パンダの白い部分を変数に格納
+
+		//SVGにある#blackのpathオブジェクトをhoverすると、hoverしたパーツだけ赤くする
+		$fig.find('#black path').hover(function () {
+			$(this).css({
+				'cursor': 'pointer', //マウスポインターを変更
+				'fill': '#EC0D50'//hover時の図形の色
+		});
+		},
+		function () {
+			$(this).css({
+				'fill': '#000'
+			});
+		});
+
+		//SVGにある#wihteのpathオブジェクトをhoverすると、#whiteのグループ全て黄色にする
+		$white.hover(function () {
+			$white.css({
+				'cursor': 'pointer',
+				'fill': '#F2E675'
+		});
+		},
+		function () {
+			$white.css({
+				'fill': '#F2F2F2'
+			});
+		});
+
+	});
+</script>
+
+</body>
+</html>

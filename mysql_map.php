@@ -24,7 +24,7 @@ if (!empty($prefecture)) {
     $test = $results->fetch(PDO::FETCH_NUM);
     // echo $test[0];
 
-    $sql = "select * from info;";
+    $sql = "select * from twtb;";
     $results = $pdo->query($sql);
 
     // Output html 
@@ -39,11 +39,12 @@ if (!empty($prefecture)) {
     //     echo "</tr>";
     // }
     // echo "</table>";
-    $prefecture = array();
+    $php_array = array();
     foreach ($results as $result) {
-        $prefecture[] = $result['name'];
+        //$php_array[] = '{ "name" : "' + $result['name'] +  '", "isFinished" : ' + $result['isFinished'] + '}';
+        $php_array[] = array('name' => $result['name'], 'isFinished' => $result['isFinished'] );
     }
-    $json = json_encode($prefecture);
+    $json = json_encode($php_array);
     echo $json;
 
     //空だったら

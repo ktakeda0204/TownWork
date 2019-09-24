@@ -97,5 +97,38 @@ $(function() {
         });
     return false;
     });
+    
+    $('#btn-all').on("click", function() {
+        // Ajax 
+        $.ajax({
+            type: "POST", // POST
+            url: "./mysql_map.php", // Define the destination URL
+            data: {request : "dummy"},
+            dataType : "json",
+
+            // if the process succeed
+            success : function(data, dataType) {
+                // add the response data to HTML file 
+                //                $('#res').html(data);
+                var japan_map = document.getElementById("japan_map").contentDocument;
+                var $japan_map = $(japan_map);
+                if ( !japan_map ) {
+                    alert("SVG file ID was not found.");
+                }
+                for ( var index = 0; index < data.length; index++ ){
+                    if ( data[index]['isFinished'] == '1') {
+                        var $prefecture = $japan_map.find(data[index]['name']);
+                        $prefecture.css("fill", "#4169e1");
+                    }
+                }
+            },
+
+            // error
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("Failed: XMLHttpRequest : " + XMLHttpRequest.status + " txtStatus : " + textStatus + " errorThrown : " + errorThrown.message); 
+            },
+        });
+        return false;
+    });
 
 });

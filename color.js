@@ -37,7 +37,7 @@ $(function() {
         if ( !japan_map ) {
             alert("SVG file ID was not found.");
         }
-        var list = ["#HOKKAIDO", "#IWATE", "#MIYAGI", "", "", "", "", "",];
+        var list = ["#HOKKAIDO", "#IWATE", "#MIYAGI"];
         for ( var index = 0; index < list.length; index++ ){
             var $prefecture = $japan_map.find(list[index]);
             $prefecture.css("fill", "#0000ff");
@@ -49,7 +49,16 @@ $(function() {
     });
 
     $('#btn-reset').on("click", function() {
-        $('#path1, #path2, #path3').css({ fill: "#ffffff" });
+        var japan_map = document.getElementById("japan_map").contentDocument;
+        var $japan_map = $(japan_map);
+        if ( !japan_map ) {
+            alert("SVG file ID was not found.");
+        }
+        var list = ["#HOKKAIDO", "#IWATE", "#MIYAGI"];
+        for ( var index = 0; index < list.length; index++ ){
+            var $prefecture = $japan_map.find(list[index]);
+            $prefecture.css("fill", "#ffffff");
+        }
     });
 
     $('#btn-search').on("click", function() {
@@ -63,11 +72,22 @@ $(function() {
             type: "POST", // POST
             url: "./mysql_map.php", // Define the destination URL
             data: data,
+            dataType : "json",
 
             // if the process succeed
             success : function(data, dataType) {
                 // add the response data to HTML file 
-                $('#res').html(data);
+                //                $('#res').html(data);
+                var japan_map = document.getElementById("japan_map").contentDocument;
+                var $japan_map = $(japan_map);
+                if ( !japan_map ) {
+                    alert("SVG file ID was not found.");
+                }
+                alert(data);
+                for ( var index = 0; index < data.length; index++ ){
+                    var $prefecture = $japan_map.find(data[index]);
+                    $prefecture.css("fill", "#0000ff");
+                }
             },
 
             // error

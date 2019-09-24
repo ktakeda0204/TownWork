@@ -6,8 +6,8 @@ $(function() {
     }
     var svgDoc = japan_map.contentDocument;
     alert(svgDoc);
-    var $svg = $(svgDoc).find('svg');
-    alert(console.dir($svg));
+    //var $svg = $(svgDoc).find('svg');
+    //alert(console.dir($svg));
 //    var $svg = $(svgDoc).find("svg");
 ////    var $svg = $(svg);
 //    alert('svg ' + $svg.length );
@@ -32,7 +32,16 @@ $(function() {
   });
 
   $('#btn-test2').on("click", function() {
-    $('#path2').css('fill', '#00ff00');
+    var japan_map = document.getElementById("japan_map").contentDocument;
+    var $japan_map = $(japan_map);
+    if ( !japan_map ) {
+      alert("SVG file ID was not found.");
+    }
+    var list = ["#HOKKAIDO", "#IWATE"];
+    for ( var index = 0; index < list.length; index++ ){
+        var $prefecture = $japan_map.find(list[index]);
+        $prefecture.css("fill", "#0000ff");
+    }
   });
 
   $('#btn-test3').on("click", function() {

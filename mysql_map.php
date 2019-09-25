@@ -42,7 +42,7 @@ if (!empty($prefecture)) {
     $php_array = array();
     foreach ($results as $result) {
         //$php_array[] = '{ "name" : "' + $result['name'] +  '", "isFinished" : ' + $result['isFinished'] + '}';
-        $php_array[] = array('name' => $result['name'], 'isFinished' => $result['isFinished'] );
+        $php_array[] = array('prefecture' => $result['prefecture'], 'isFinished' => $result['isFinished'], 'magazine'=>$result['magazine'] );
     }
     $json = json_encode($php_array);
     echo $json;

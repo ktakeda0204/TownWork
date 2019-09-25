@@ -1,59 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <html>
-  <head profile="http://purl.org/net/ns/metaprof">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>TownWork</title>
-    <link rev="made" href="mailto:netmania@hogehogehoge.com" />
-    <link rel="start" type="text/html" href="/index.html" />
-    <link rel="stylesheet" href="style.css" type="text/css" />
-    <link rel="alternate" type="application/atom+xml" title="Atom" href="atom.xml" />
-    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="index.xml" />
-  </head>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <head profile="http://purl.org/net/ns/metaprof">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>TownWork</title>
+        <link rev="made" href="mailto:netmania@hogehogehoge.com" />
+        <link rel="start" type="text/html" href="/index.html" />
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <link rel="stylesheet" href="search_button.css" type="text/css" />
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="atom.xml" />
+        <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="index.xml" />
+    </head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
 
-  <script type="text/javascript" src="color.js"></script>
-  <body>
-    <div id="frame">
-      <div id="header">
-        <h1>Town work データベース</h1>
-        <h2></h2>
-      </div>
+    <script type="text/javascript" src="button.js"></script>
+    <body>
+        <div id="frame">
+            <div id="header">
+                <h1>Town work データベース</h1>
+                <h2></h2>
+            </div>
 
-      <div id="main">
+            <div id="main">
 
-        <button class="btn" id="btn-test1">Test 1</button>
-        <button class="btn" id="btn-test2">Test 2</button>
-        <button class="btn" id="btn-test3">Test 3</button>
-        <button class="btn" id="btn-all">全て</button>
-        <button class="btn" id="btn-reset">reset</button>
+<!--                <div class="search">
+                    <div class="search-head"><b>検索</b></div>
+                    <form id="searchform" method="post">
+                        <table class="search-table">
+                            <tr>
+                                <th>都道府県-選択-</th>
+                                <td><select id="request" name="pref_name">
+                                        <option value="" selected></option>
+                                        <option value="#HOKKAIDO">北海道</option>
+                                        <option value="#IWATE">岩手</option>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><input class="submit-btn" type="submit" value="検索" id="btn-search" /></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                -->
 
-        <div class="search">
-            <div class="search-head"><b>検索</b></div>
-            <form id="searchform" method="post">
-                <table class="search-table">
-                    <tr>
-                        <th>都道府県-選択-</th>
-                        <td><select id="request" name="pref_name">
-                                <option value="" selected></option>
+                <table>
+                    <tr style="border-bottom: 1px solid;">
+                        <td width="15%"><b>検索</b></td>
+                        <td width="85%">
+                            <button class="main_menu" type="button" id="btn-all">全て</button>
+                            <button class="main_menu" type="button" id="btn-reset">リセット</button>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid;">
+                        <td width="15%">詳細な検索設定</td>
+                        <td width="85%">
+                            <button class="main_menu" type="button" id="btn-townwork">種類別</button>
+                            <button class="main_menu" type="button" id="BurstStopper">タウンワーク以外</button>
+                            <select class="main_menu" id="request" name="pref_name">
+                                <option value="" selected>--都道府県--</option>
                                 <option value="#HOKKAIDO">北海道</option>
                                 <option value="#IWATE">岩手</option>
-                        </select></td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td><input class="submit-btn" type="submit" value="検索" id="btn-search" /></td>
+                            </select>
+                        </td>
                     </tr>
                 </table>
-            </form>
+                
+                <object id="japan_map" data="./japan_map.svg" type="image/svg+xml" width=100% height=auto></object>
+                
+                <div id="res"></div>
+
+
+            </div> <!--main-->
+
+            <div id="footer"> </div>
         </div>
-        <div id="res"></div>
-
-        <object id="japan_map" data="./japan_map.svg" type="image/svg+xml" ></object>
-
-      </div> <!--main-->
-
-      <div id="footer"> </div>
-    </div>
-  </body>
+    </body>
 </html>

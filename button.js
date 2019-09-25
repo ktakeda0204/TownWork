@@ -72,7 +72,7 @@ function ConvertToKanji(prefecture){
 
 function CreateTable(tw_json) {
     
-    var table = "<table>";
+    var table = "<table class='result_menu'>";
     table    += "<tr><th>場所</th><th>雑誌名</th></tr>";
     for ( var index=0; index<tw_json.length; index++){
         if ( tw_json[index]['isFinished'] == '0' ) continue;
